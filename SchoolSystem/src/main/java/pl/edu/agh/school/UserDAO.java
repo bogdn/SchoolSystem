@@ -1,5 +1,6 @@
 package pl.edu.agh.school;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -19,6 +20,19 @@ public class UserDAO {
 	 * @Transactional annotation below will trigger Spring Hibernate transaction manager to automatically create
 	 * a hibernate session. See src/main/webapp/WEB-INF/servlet-context.xml
 	 */
+	@Transactional
+	public User getUser(String login) {
+		List userList = new ArrayList();
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery("from User u where u.login = :login");
+		query.setParameter("login", login);
+		userList = query.list();
+		if (userList.size() > 0)
+			return (User) userList.get(0);
+		else
+			return null;	
+	}
+	
 	@Transactional
 	public List<User> findAll() {
 		Session session = sessionFactory.getCurrentSession();

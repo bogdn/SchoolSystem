@@ -1,21 +1,23 @@
 package pl.edu.agh.school;
 
-import java.util.List;
-
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 
 @Entity
 @Table(name = "user")
 public class User {
-	@Id @GeneratedValue private long id;
+	@Id
+	@GeneratedValue 
+	private long id;
 	private String username;
 	private String password;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinTable(name="user_roles",
+	joinColumns = {@JoinColumn(name="user_id", referencedColumnName="id")},
+	inverseJoinColumns = {@JoinColumn(name="role_id", referencedColumnName="id")}
+	)
+	private Role role;
 	
 	public long getId() {
 		return id;
@@ -34,6 +36,12 @@ public class User {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public Role getRole() {
+		return role;
+	}
+	public void setRole(Role role) {
+		this.role = role;
 	}
 	
 	
