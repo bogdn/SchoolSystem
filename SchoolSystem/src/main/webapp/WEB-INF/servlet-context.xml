@@ -44,9 +44,9 @@
 		destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url"
-			value="jdbc:mysql://sql4.freemysqlhosting.net:3306/sql434547" />
-		<property name="username" value="sql434547" />
-		<property name="password" value="kF2!zX3*" />
+			value="jdbc:mysql://db4free.net:3306/projektagh" />
+		<property name="username" value="projektagh" />
+		<property name="password" value="projektagh" />
 		<property name="validationQuery" value="SELECT 1" />
 	</bean>
 
