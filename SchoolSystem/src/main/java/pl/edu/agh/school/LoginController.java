@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-@Controller
 public class LoginController {
 
 	@Autowired
@@ -54,5 +53,13 @@ public class LoginController {
 		model.addAttribute("message", "Zostałeś wylogowany.");
 		model.addAttribute("login", new Login());
 		return new ModelAndView("login");
+	}
+	
+	@RequestMapping(value = "/admin", method = RequestMethod.GET)
+	public String welcomeAdmin(ModelMap model) {
+ 
+		model.addAttribute("message", "Spring Security - ROLE_ADMIN");
+		return "hello";
+ 
 	}
 }

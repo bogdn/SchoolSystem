@@ -15,6 +15,10 @@
         <put-attribute name="body" value="/WEB-INF/tiles/pages/main.jsp" />
     </definition>
     
+        <definition name="hello" extends="defaultTemplate">
+        <put-attribute name="body" value="/WEB-INF/tiles/pages/hello.jsp" />
+    </definition>
+    
     <definition name="login" template="WEB-INF/tiles/loginLayout.jsp">
     	<put-attribute name="header" value="/WEB-INF/tiles/header.jsp" />
         <put-attribute name="body" value="/WEB-INF/pages/login.jsp" />
