@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.type.YesNoType;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "class")
@@ -17,8 +18,9 @@ public class Class {
 	@GeneratedValue 
 	private long id;
 	private String name;
-	private String fullname; 
-	private Date year;
+	private String fullName; 
+	
+	private int year;
 	
 	public String getName() {
 		return name;
@@ -26,18 +28,21 @@ public class Class {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getFullname() {
-		return fullname;
+	public String getFullName() {
+		return fullName;
 	}
-	public void setFullname(String fullname) {
-		this.fullname = fullname;
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
 	}
-	public Date getYear() {
+	public int getYear() {
 		return year;
 	}
-	public void setYear(Date year) {
+	public void setYear(int year) {
 		this.year = year;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "id:" + id + "name:" + name + "fullname:" + fullName + "year:" + year;
+	}
 }
