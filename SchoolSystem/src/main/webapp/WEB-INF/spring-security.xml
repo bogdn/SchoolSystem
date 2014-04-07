@@ -10,6 +10,7 @@
 
 	<http auto-config="true">
 		<intercept-url pattern="/" access="ROLE_ADMIN" />
+		<intercept-url pattern="/addTeacher" access="ROLE_ADMIN" /> 
 	</http>
 	
 	<beans:import resource="servlet-context.xml"/>
@@ -21,6 +22,8 @@
 	 
 	<beans:bean id="customUserDetailsService" class="pl.edu.agh.school.CustomUserDetailsService">
 	</beans:bean>
+	
+	<beans:bean id="webexpressionHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" /> 
 	
 	<authentication-manager>  
         <authentication-provider user-service-ref="customUserDetailsService">  

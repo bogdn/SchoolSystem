@@ -28,11 +28,11 @@ body {
 }
 
 .leftPane {
-	width: 100px;
+	width: 200px;
 }
 
 .rightPane {
-	width: 815px;
+	width: 715px;
 }
 
 .leftMenu {
