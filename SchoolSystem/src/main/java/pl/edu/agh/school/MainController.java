@@ -24,5 +24,18 @@ public class MainController {
 
 	}
 	
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	public String homeTest(Model model, HttpServletRequest request) {
+
+		User user = (User) request.getSession().getAttribute("user");
+
+//		if (user == null) {
+//			return "redirect:/login";
+//		} else {
+			return "main";
+//		}
+
+	}
+	
 
 }

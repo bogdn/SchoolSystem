@@ -31,20 +31,20 @@ public class LoginController {
 		}
 	}
 
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String loginPost(Model model, Login login, HttpServletRequest request) {
-
-		System.out.println(login.username);
-		User user = userDAO.getUser(login.username, login.password);
-
-		if (user != null) {
-			request.getSession().setAttribute("user", user);
-			return "redirect:/";
-		} else {
-			model.addAttribute("message", "Niepoprawny login lub hasło.");
-			return "login";
-		}
-	}
+//	@RequestMapping(value = "/login", method = RequestMethod.POST)
+//	public String loginPost(Model model, Login login, HttpServletRequest request) {
+//
+//		System.out.println(login.username);
+//		User user = userDAO.getUser(login.username, login.password);
+//
+//		if (user != null) {
+//			request.getSession().setAttribute("user", user);
+//			return "redirect:/";
+//		} else {
+//			model.addAttribute("message", "Niepoprawny login lub hasło.");
+//			return "login";
+//		}
+//	}
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public ModelAndView logoutGet(ModelMap model, HttpServletRequest request) {

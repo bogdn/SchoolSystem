@@ -3,6 +3,8 @@ import java.util.ArrayList;
 import java.util.Collection;  
 import java.util.List;  
   
+
+
 import org.springframework.beans.factory.annotation.Autowired;  
 import org.springframework.security.core.GrantedAuthority;  
 import org.springframework.security.core.authority.SimpleGrantedAuthority;  
@@ -17,14 +19,16 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(readOnly=true)  
 public class CustomUserDetailsService implements UserDetailsService {  
       
-    @Autowired  
-    private UserDAO userDAO;      
+	@Autowired
+	private UserDAO userDAO;     
   
     public UserDetails loadUserByUsername(String login)  
             throws UsernameNotFoundException {  
-          
+          System.out.println(login);
+          System.out.println(userDAO);
         pl.edu.agh.school.User domainUser = userDAO.getUser(login);  
-          
+          System.out.println(domainUser);
+          System.out.println("test3");
         boolean enabled = true;  
         boolean accountNonExpired = true;  
         boolean credentialsNonExpired = true;  
@@ -41,7 +45,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         );  
     }  
       
-    public Collection getAuthorities(Integer role) {  
+    public Collection<GrantedAuthority> getAuthorities(Integer role) {  
         List<GrantedAuthority> authList = getGrantedAuthorities(getRoles(role));  
         return authList;  
     }  
@@ -51,11 +55,11 @@ public class CustomUserDetailsService implements UserDetailsService {
         List<String> roles = new ArrayList<String>();  
   
         if (role.intValue() == 1) {  
-            roles.add("ROLE_MODERATOR");  
-            roles.add("ROLE_ADMIN");  
+            roles.add("ROLE_ADMIN");   
         } else if (role.intValue() == 2) {  
             roles.add("ROLE_MODERATOR");  
         }  
+        System.out.println(roles);
         return roles;  
     }  
       
