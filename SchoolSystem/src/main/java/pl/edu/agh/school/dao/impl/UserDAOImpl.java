@@ -1,4 +1,4 @@
-package pl.edu.agh.school.models;
+package pl.edu.agh.school.dao.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import pl.edu.agh.school.dao.UserDAO;
+import pl.edu.agh.school.models.User;
+
 @Repository("userDAO")
-public class UserDAO{
+public class UserDAOImpl implements UserDAO{
 	
 	@Autowired private SessionFactory sessionFactory;
 	
