@@ -1,4 +1,4 @@
-package pl.edu.agh.school;
+package pl.edu.agh.school.models;
 
 public interface RoleDAO {
 

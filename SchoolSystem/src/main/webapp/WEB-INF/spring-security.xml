@@ -18,7 +18,7 @@
 	    <context:component-scan base-package="pl.edu.agh.school" />
     <context:annotation-config/>
 	
-	<beans:bean id="userDAO" class="pl.edu.agh.school.UserDAO" />
+	<beans:bean id="userDAO" class="pl.edu.agh.school.models.UserDAO" />
 	 
 	<beans:bean id="customUserDetailsService" class="pl.edu.agh.school.CustomUserDetailsService">
 	</beans:bean>

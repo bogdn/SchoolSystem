@@ -1,4 +1,4 @@
-package pl.edu.agh.school;
+package pl.edu.agh.school.models;
 
 import java.util.ArrayList;
 import java.util.List;

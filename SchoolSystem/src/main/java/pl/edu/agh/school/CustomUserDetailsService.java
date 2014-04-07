@@ -5,6 +5,7 @@ import java.util.List;
   
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;  
 import org.springframework.security.core.GrantedAuthority;  
 import org.springframework.security.core.authority.SimpleGrantedAuthority;  
@@ -14,6 +15,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;  
 import org.springframework.stereotype.Service;  
 import org.springframework.transaction.annotation.Transactional;    
+
+import pl.edu.agh.school.models.UserDAO;
   
 @Service  
 @Transactional(readOnly=true)  
@@ -26,7 +29,7 @@ public class CustomUserDetailsService implements UserDetailsService {
             throws UsernameNotFoundException {  
           System.out.println(login);
           System.out.println(userDAO);
-        pl.edu.agh.school.User domainUser = userDAO.getUser(login);  
+        pl.edu.agh.school.models.User domainUser = userDAO.getUser(login);  
           System.out.println(domainUser);
           System.out.println("test3");
         boolean enabled = true;  
