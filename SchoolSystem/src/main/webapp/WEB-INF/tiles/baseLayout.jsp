@@ -69,6 +69,10 @@ table tbody tr:nth-child(odd) {
 table tbody tr:hover {
 	background: #FFE9A0;
 }
+
+#menu0 dt {
+	cursor: pointer;
+}
 </style>
 </head>
 <body>

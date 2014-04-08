@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import pl.edu.agh.school.dao.ClassDAO;
 import pl.edu.agh.school.models.Class;
+import pl.edu.agh.school.models.Teacher;
 
 @Controller
 public class ClassController {
@@ -27,8 +28,21 @@ public class ClassController {
 	@Autowired
 	ClassDAO classDAO;
 	
+	@Transactional
 	@RequestMapping(value = "/addClass", method = RequestMethod.GET)
 	public String addClass(Model model, HttpServletRequest request) {
+		
+		Class schoolClass = new Class();
+		schoolClass.setFullName("hahahaha");
+		schoolClass.setName("test");
+		schoolClass.setYear(1999);
+		
+		Teacher teacher = new Teacher();
+		teacher.setUsername("test2");
+		teacher.setPassword("test3");
+		teacher.setSchoolClass(schoolClass);
+		System.out.println(teacher);
+		sessionFactory.getCurrentSession().save(teacher);
 		
 		model.addAttribute("class", new Class());
 		
