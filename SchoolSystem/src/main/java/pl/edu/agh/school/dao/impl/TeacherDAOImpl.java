@@ -26,7 +26,6 @@ public class TeacherDAOImpl implements TeacherDAO {
 	public List<Teacher> findAll() {
 		System.out.println("findall");
 			Session session = sessionFactory.getCurrentSession();
-			System.out.println(session);
 			List teachers = session.createQuery("from Teacher").list();
 			System.out.println("findallend");
 			return teachers;

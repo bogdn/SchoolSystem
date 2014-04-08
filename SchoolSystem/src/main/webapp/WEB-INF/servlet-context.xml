@@ -33,8 +33,8 @@
 	<bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://db4free.net:3306/projektagh" />
-		<property name="username" value="projektagh" />
+		<property name="url" value="jdbc:mysql://belplastplus.pl/belplastpl_agh" />
+		<property name="username" value="belplastpl_agh" />
 		<property name="password" value="projektagh" />
 		<property name="validationQuery" value="SELECT 1" />
 	</bean>
