@@ -7,7 +7,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>School System AGH</title>
-<script type="text/javascript" src="<c:url value="/resources/js/menu.js" />"></script>
+<script type="text/javascript"
+	src="<c:url value="/resources/js/menu.js" />"></script>
 <style type="text/css">
 body {
 	font-family: Arial, Verdana, sans-serif;
@@ -31,11 +32,11 @@ body {
 }
 
 .leftPane {
-	width: 200px;
+	width: 250px;
 }
 
 .rightPane {
-	width: 715px;
+	width: 665px;
 }
 
 .contentPane {
@@ -72,6 +73,18 @@ table tbody tr:hover {
 
 #menu0 dt {
 	cursor: pointer;
+}
+
+.error {
+	color: #ff0000;
+}
+
+.errorblock {
+	color: #000;
+	background-color: #ffEEEE;
+	border: 3px solid #ff0000;
+	padding: 8px;
+	margin: 16px;
 }
 </style>
 </head>

@@ -16,15 +16,22 @@
 				<spring:url value="/classes" var="classes" htmlEscape="true" />
 				<a href="${classes}">Klasy</a>
 			</sec:authorize>
-</dd>
+		</dd>
 		<dd>
 			<sec:authorize access="hasRole('ROLE_ADMIN')">
 				<spring:url value="/addClass" var="addClass" htmlEscape="true" />
 				<a href="${addClass}">Dodaj klasę</a>
 			</sec:authorize>
 		</dd>
-	</dl>
 
+		<sec:authorize access="hasRole('ROLE_ADMIN')">
+			<dt>Zarządzanie nauczycielami</dt>
+			<dd>
+				<spring:url value="/addTeacher" var="addTeacher" htmlEscape="true" />
+				<a href="${addTeacher}">Dodaj nauczyciela</a>
+			</dd>
+		</sec:authorize>
+	</dl>
 	<script type="text/javascript">
 		// <![CDATA[
 		new Menu('menu0');

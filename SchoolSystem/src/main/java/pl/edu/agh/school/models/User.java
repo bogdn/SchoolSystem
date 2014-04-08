@@ -1,6 +1,10 @@
 package pl.edu.agh.school.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
 
 
 @Entity
@@ -10,7 +14,9 @@ public class User {
 	@Id
 	@GeneratedValue 
 	private long id;
+	@Size(min=4, max=20) 
 	private String username;
+	@Size(min=6, max=30) 
 	private String password;
 	
 	@OneToOne(cascade=CascadeType.ALL)

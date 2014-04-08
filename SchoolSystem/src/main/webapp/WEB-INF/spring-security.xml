@@ -2,12 +2,16 @@
 	xmlns:beans="http://www.springframework.org/schema/beans" 
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:mvc="http://www.springframework.org/schema/mvc" 
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 	http://www.springframework.org/schema/security
 	http://www.springframework.org/schema/security/spring-security-3.2.xsd
-	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+	http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
+<mvc:annotation-driven />
 	<http auto-config="true">
 		<intercept-url pattern="/" access="ROLE_ADMIN" />
 		<intercept-url pattern="/addTeacher" access="ROLE_ADMIN" /> 
@@ -20,6 +24,8 @@
 	
 	<beans:bean id="userDAO" class="pl.edu.agh.school.dao.impl.UserDAOImpl" />
 	<beans:bean id="classDAO" class="pl.edu.agh.school.dao.impl.ClassDAOImpl" />
+	<beans:bean id="TeacherDAO" class="pl.edu.agh.school.dao.impl.TeacherDAOImpl" />
+
 	 
 	<beans:bean id="customUserDetailsService" class="pl.edu.agh.school.CustomUserDetailsService">
 	</beans:bean>

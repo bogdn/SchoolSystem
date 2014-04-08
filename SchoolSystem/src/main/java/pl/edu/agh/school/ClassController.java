@@ -3,6 +3,7 @@ package pl.edu.agh.school;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,58 +26,51 @@ public class ClassController {
 
 	@Autowired
 	SessionFactory sessionFactory;
-	
+
 	@Autowired
 	ClassDAO classDAO;
-	
-	@Transactional
+
 	@RequestMapping(value = "/addClass", method = RequestMethod.GET)
 	public String addClass(Model model, HttpServletRequest request) {
-		
-		Class schoolClass = new Class();
-		schoolClass.setFullName("hahahaha");
-		schoolClass.setName("test");
-		schoolClass.setYear(1999);
-		
-		Teacher teacher = new Teacher();
-		teacher.setUsername("test2");
-		teacher.setPassword("test3");
-		teacher.setSchoolClass(schoolClass);
-		System.out.println(teacher);
-		sessionFactory.getCurrentSession().save(teacher);
-		
+
 		model.addAttribute("class", new Class());
-		
-			return "addClass";
+
+		return "addClass";
 	}
-	
+
 	@Transactional
 	@RequestMapping(value = "/addClass", method = RequestMethod.POST)
-	public String AddNewClass(@ModelAttribute("class")Class newClass, Model model, HttpServletRequest request) {
-		
+	public String AddNewClass(@Valid @ModelAttribute("class") Class newClass,
+			BindingResult errors, Model model, HttpServletRequest request) {
+		if (errors.hasErrors()) {
+			model.addAttribute("schoolClass", newClass);
+			return "addClass";
+		}
 		sessionFactory.getCurrentSession().save(newClass);
-		
+
 		model.addAttribute("message", "Klasa została dodana");
 		model.addAttribute("schoolClass", newClass);
-			return "showClass";
+		return "showClass";
 	}
-	
+
 	@Transactional
 	@RequestMapping(value = "/classes", method = RequestMethod.GET)
 	public String classes(Model model, HttpServletRequest request) {
 		System.out.println(model);
 		List<Class> classes = classDAO.findAll();
-		
+
 		model.addAttribute("classes", classes);
-			return "classes";
+		return "classes";
 	}
-	
+
 	@Transactional
 	@RequestMapping(value = "/deleteClass", method = RequestMethod.GET)
-	public String deleteClass(Model model, HttpServletRequest request, RedirectAttributes redirectAttributes) {
-		redirectAttributes.addFlashAttribute("message", "Klasa została usunięta.");
+	public String deleteClass(Model model, HttpServletRequest request,
+			RedirectAttributes redirectAttributes) {
+		redirectAttributes.addFlashAttribute("message",
+				"Klasa została usunięta.");
 		classDAO.removeClass(Integer.parseInt(request.getParameter("id")));
-			return "redirect:/classes";
+		return "redirect:/classes";
 	}
-	
+
 }
