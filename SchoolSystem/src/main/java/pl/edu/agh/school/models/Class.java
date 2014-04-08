@@ -41,6 +41,13 @@ public class Class {
 		this.year = year;
 	}
 	
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	
 	@Override
 	public String toString() {
 		return "id:" + id + "name:" + name + "fullname:" + fullName + "year:" + year;

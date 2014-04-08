@@ -22,7 +22,7 @@
 			</tr>
 			<tr>
 				<th></th>
-				<td><input name="commit" type="submit" value="Zaloguj" /></td>
+				<td><input name="commit" type="submit" value="Dodaaj" /></td>
 			</tr>
 		</table>
 		</fieldse>

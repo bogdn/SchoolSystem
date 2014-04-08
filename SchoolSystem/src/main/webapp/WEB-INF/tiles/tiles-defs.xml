@@ -26,4 +26,8 @@
 	<definition name="showClass" extends="defaultTemplate">
 		<put-attribute name="body" value="/WEB-INF/tiles/pages/showClass.jsp" />
 	</definition>
+	
+		<definition name="classes" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/tiles/pages/classes.jsp" />
+	</definition>
 </tiles-definitions>

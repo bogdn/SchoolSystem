@@ -19,6 +19,7 @@
     <context:annotation-config/>
 	
 	<beans:bean id="userDAO" class="pl.edu.agh.school.dao.impl.UserDAOImpl" />
+	<beans:bean id="classDAO" class="pl.edu.agh.school.dao.impl.ClassDAOImpl" />
 	 
 	<beans:bean id="customUserDetailsService" class="pl.edu.agh.school.CustomUserDetailsService">
 	</beans:bean>

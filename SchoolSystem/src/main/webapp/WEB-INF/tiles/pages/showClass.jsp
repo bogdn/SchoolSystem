@@ -5,7 +5,7 @@
 	<div>	
 	<h4>${message}</h4>
 	
-	<table cellspacing="0">
+	<table cellspacing="0" width="200">
 			<tr>
 				<th><label for="name">Nazwa</label></th>
 				<td>${schoolClass.name}</td>
