@@ -26,10 +26,15 @@
 
 		<sec:authorize access="hasRole('ROLE_ADMIN')">
 			<dt>Zarządzanie nauczycielami</dt>
+						<dd>
+				<spring:url value="/teachers" var="teachers" htmlEscape="true" />
+				<a href="${teachers}">Nauczyciele</a>
+			</dd>
 			<dd>
 				<spring:url value="/addTeacher" var="addTeacher" htmlEscape="true" />
 				<a href="${addTeacher}">Dodaj nauczyciela</a>
 			</dd>
+			
 		</sec:authorize>
 	</dl>
 	<script type="text/javascript">

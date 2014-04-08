@@ -34,4 +34,8 @@
 		<definition name="addTeacher" extends="defaultTemplate">
 		<put-attribute name="body" value="/WEB-INF/tiles/pages/addTeacher.jsp" />
 	</definition>
+	
+			<definition name="teachers" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/tiles/pages/teachers.jsp" />
+	</definition>
 </tiles-definitions>

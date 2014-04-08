@@ -1,6 +1,7 @@
 package pl.edu.agh.school;
 
 import java.beans.PropertyEditorSupport;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -70,4 +71,12 @@ public class TeacherController {
 			return "addTeacher";
 	}
 	
+	@RequestMapping(value="/teachers", method = RequestMethod.GET)
+	public String getTeachers(Model model) {
+		
+		List<Teacher> teachers = teacherDAO.findAll();
+		model.addAttribute("teachers", teachers);
+		return "teachers";
+		
+	}
 }

@@ -10,8 +10,8 @@ import javax.persistence.Table;
 @Table(name="teacher")  
 public class Teacher extends User {
 
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="class_id", updatable=true, insertable=true)
+	@OneToOne(cascade=CascadeType.ALL, optional = false)
+	@JoinColumn(name="class_id")
 	private Class schoolClass;
 
 	public Class getSchoolClass() {
