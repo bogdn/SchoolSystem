@@ -1,8 +1,13 @@
 package pl.edu.agh.school.models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToOne;
+import javax.persistence.PreRemove;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -28,6 +33,9 @@ public class Class {
 	@NotNull 
 	@Min(1992) @Max(2012)
 	private int year;
+	
+	@OneToOne(mappedBy = "schoolClass")
+	private Teacher teacher;
 
 	public String getName() {
 		return name;
@@ -66,4 +74,13 @@ public class Class {
 		return "id:" + id + "name:" + name + "fullname:" + fullName + "year:"
 				+ year;
 	}
+
+	public Teacher getMaster() {
+		return teacher;
+	}
+
+	public void setMaster(Teacher teacher) {
+		this.teacher = teacher;
+	}
+	
 }

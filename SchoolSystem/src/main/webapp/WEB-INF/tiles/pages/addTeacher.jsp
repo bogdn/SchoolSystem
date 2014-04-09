@@ -5,7 +5,7 @@
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 	<div>
-	<h2>Dodaj klasę</h2>
+	<h2>Dodaj Nauczyciela</h2>
 <spring:url value="/addTeacher" var="addTeacher" htmlEscape="true"/>
 	<sf:form method="POST" modelAttribute="teacher" action="${addTeacher}">
 		<fieldse>

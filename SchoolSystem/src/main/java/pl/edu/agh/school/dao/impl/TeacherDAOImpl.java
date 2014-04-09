@@ -15,20 +15,40 @@ public class TeacherDAOImpl implements TeacherDAO {
 
 	@Autowired
 	SessionFactory sessionFactory;
-	
+
 	@Transactional
 	public void saveTeacher(Teacher teacher) {
 		Session session = sessionFactory.getCurrentSession();
+		Class schoolClass = teacher.getSchoolClass();
+		if (schoolClass != null) {
+			Teacher oldTeacher = schoolClass.getMaster();
+			if (oldTeacher != null && oldTeacher != teacher) {
+				oldTeacher.setSchoolClass(null);
+				session.update(oldTeacher);
+			}
+		}
 		session.save(teacher);
+	}
+	
+	@Transactional
+	public void updateTeacher(Teacher teacher) {
+		Session session = sessionFactory.getCurrentSession();
+		Class schoolClass = teacher.getSchoolClass();
+		if (schoolClass != null) {
+			Teacher oldTeacher = schoolClass.getMaster();
+			if (oldTeacher != null && oldTeacher != teacher) {
+				oldTeacher.setSchoolClass(null);
+				session.update(oldTeacher);
+			}
+		}
+		session.update(teacher);
 	}
 
 	@Transactional
 	public List<Teacher> findAll() {
-		System.out.println("findall");
-			Session session = sessionFactory.getCurrentSession();
-			List teachers = session.createQuery("from Teacher").list();
-			System.out.println("findallend");
-			return teachers;
+		Session session = sessionFactory.getCurrentSession();
+		List teachers = session.createQuery("from Teacher").list();
+		return teachers;
 	}
 
 }
