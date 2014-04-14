@@ -1,10 +1,11 @@
 package pl.edu.agh.school.models;
 
+import java.util.Date;
+
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 
-import org.hibernate.validator.constraints.NotEmpty;
-import org.hibernate.validator.constraints.Range;
+import org.hibernate.validator.constraints.Email;
 
 
 @Entity
@@ -19,6 +20,34 @@ public class User {
 	@Size(min=6, max=30) 
 	private String password;
 	
+	@Size(min=2, max=30)
+	private String name;
+	
+	@Size(min=2, max=30)
+	private String surname;
+	
+	@Email
+	private String email;
+		
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getSurname() {
+		return surname;
+	}
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinTable(name="user_roles",
 	joinColumns = {@JoinColumn(name="user_id", referencedColumnName="id")},

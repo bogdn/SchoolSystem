@@ -21,6 +21,21 @@
 				<td><sf:errors path="password" cssClass="error" /></td>
 			</tr>
 						<tr>
+				<th><label for="name">Imię</label></th>
+				<td><sf:input path="name" id="name" /></td>
+				<td><sf:errors path="name" cssClass="error" /></td>
+			</tr>
+						<tr>
+				<th><label for="surname">Nazwisko</label></th>
+				<td><sf:input path="surname" id="surname" /></td>
+				<td><sf:errors path="surname" cssClass="error" /></td>
+			</tr>
+			<tr>
+				<th><label for="email">E-mail</label></th>
+				<td><sf:input path="email" id="email" /></td>
+				<td><sf:errors path="email" cssClass="error" /></td>
+			</tr>
+						<tr>
 				<th><label for="schoolClass">Klasa</label></th>
 				<td>
 				<sf:select path="schoolClass" id="schoolClass">

@@ -1,7 +1,9 @@
 package pl.edu.agh.school.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +51,25 @@ public class TeacherDAOImpl implements TeacherDAO {
 		Session session = sessionFactory.getCurrentSession();
 		List teachers = session.createQuery("from Teacher").list();
 		return teachers;
+	}
+	
+	@Transactional
+	public Teacher getTeacher(int id) {
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery("from Teacher t where t.id = :id");  
+        query.setInteger("id", id);
+        List<Teacher> teacherList = new ArrayList<Teacher>();  
+        teacherList = query.list();  
+        if (teacherList.size() > 0)  
+        	return teacherList.get(0);
+        
+        return null;
+	}
+	
+	@Transactional
+	public void removeTeacher(Teacher teacher) {
+		Session session = sessionFactory.getCurrentSession();
+        session.delete(teacher);
 	}
 
 }

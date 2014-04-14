@@ -17,10 +17,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import pl.edu.agh.school.dao.ClassDAO;
 import pl.edu.agh.school.dao.RoleDAO;
 import pl.edu.agh.school.dao.TeacherDAO;
+import pl.edu.agh.school.dao.UserDAO;
 import pl.edu.agh.school.models.Class;
 import pl.edu.agh.school.models.Teacher;
 
@@ -35,6 +37,9 @@ public class TeacherController {
 	
 	@Autowired 
 	RoleDAO roleDAO;
+	
+	@Autowired
+	UserDAO userDAO;
 	
 	@InitBinder
 	public void initBinder(WebDataBinder binder, WebRequest request) {
@@ -57,17 +62,26 @@ public class TeacherController {
 	
 	@Transactional
 	@RequestMapping(value = "/addTeacher", method = RequestMethod.POST)
-	public String AddNewClass(@Valid Teacher teacher, BindingResult errors, Model model, HttpServletRequest request) {
+	public String AddNewTeacher(@Valid Teacher teacher, BindingResult errors, Model model, HttpServletRequest request) {
+		
+		model.addAttribute("teacher", teacher);
 		
 		if (errors.hasErrors()) {
-			model.addAttribute("teacher", teacher);
 			return "addTeacher";
 		}
 		
-		teacher.setRole(roleDAO.getRole("ROLE_TEACHER"));;
-		teacherDAO.saveTeacher(teacher);
+		if(userDAO.isUserNameAvailable(teacher.getUsername()))
+		{
+			teacher.setRole(roleDAO.getRole("ROLE_TEACHER"));
+			teacherDAO.saveTeacher(teacher);
+			model.addAttribute("teacher", new Teacher());
+			model.addAttribute("message", "Nauczyciel " +teacher.getName() +" " + teacher.getSurname() + " został dodany.");
+		}
+		else
+		{
+			model.addAttribute("message", "Nazwa użytkownika jest zajęta.");
+		}
 		
-		model.addAttribute("teacher", teacher);
 			return "addTeacher";
 	}
 	
@@ -78,5 +92,15 @@ public class TeacherController {
 		model.addAttribute("teachers", teachers);
 		return "teachers";
 		
+	}
+	
+	@Transactional
+	@RequestMapping(value = "/deleteTeacher", method = RequestMethod.GET)
+	public String deleteTeacher(Model model, HttpServletRequest request,
+			RedirectAttributes redirectAttributes) {
+		redirectAttributes.addFlashAttribute("message",
+				"Nauczyciel został usunięty.");
+		teacherDAO.removeTeacher(teacherDAO.getTeacher(Integer.parseInt(request.getParameter("id"))));
+		return "redirect:/classes";
 	}
 }
