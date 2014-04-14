@@ -17,6 +17,7 @@ public class MainController {
 	
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String homeTest(Model model, HttpServletRequest request) {
+		System.out.println();
 			return "main";
 	}
 	

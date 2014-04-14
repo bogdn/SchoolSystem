@@ -12,9 +12,12 @@
         http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
 <mvc:annotation-driven />
-	<http auto-config="true">
-		<intercept-url pattern="/" access="ROLE_ADMIN" />
-		<intercept-url pattern="/addTeacher" access="ROLE_ADMIN" /> 
+<http pattern="/login" security="none"></http>
+	<http use-expressions="true">
+	<form-login login-page="/login"
+		authentication-failure-url="/login" default-target-url="/main"/>
+		<intercept-url pattern="/" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/addTeacher" access="hasRole('ROLE_ADMIN')" /> 
 	</http>
 	
 	<beans:import resource="servlet-context.xml"/>

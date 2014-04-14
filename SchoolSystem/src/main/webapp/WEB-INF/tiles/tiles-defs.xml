@@ -26,16 +26,25 @@
 	<definition name="showClass" extends="defaultTemplate">
 		<put-attribute name="body" value="/WEB-INF/tiles/pages/showClass.jsp" />
 	</definition>
-	
-		<definition name="classes" extends="defaultTemplate">
+
+	<definition name="classes" extends="defaultTemplate">
 		<put-attribute name="body" value="/WEB-INF/tiles/pages/classes.jsp" />
 	</definition>
-	
-		<definition name="addTeacher" extends="defaultTemplate">
-		<put-attribute name="body" value="/WEB-INF/tiles/pages/addTeacher.jsp" />
+
+	<definition name="addTeacher" extends="defaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/tiles/pages/addTeacher.jsp" />
+	</definition>
+
+	<definition name="teachers" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/tiles/pages/teachers.jsp" />
 	</definition>
 	
-			<definition name="teachers" extends="defaultTemplate">
-		<put-attribute name="body" value="/WEB-INF/tiles/pages/teachers.jsp" />
+	<definition name="login" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/tiles/pages/login.jsp"/>
+		<put-attribute name="header" value="" />
+		<put-attribute name="menu" value="" />
+		
+		<put-attribute name="footer" value="" />
 	</definition>
 </tiles-definitions>
