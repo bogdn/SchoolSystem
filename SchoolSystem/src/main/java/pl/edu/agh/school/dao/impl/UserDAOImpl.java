@@ -45,4 +45,18 @@ public class UserDAOImpl implements UserDAO{
 		return users;
 	}
 	
+	@Transactional
+	public Boolean isUserNameAvailable(String name) {
+    	Session session = sessionFactory.getCurrentSession();
+    	System.out.println(session);
+        List<User> userList = new ArrayList<User>();  
+        Query query = session.createQuery("from User u where u.username = :username");  
+        query.setParameter("username", name);  
+        userList = query.list();  
+        if (userList.size() > 0)  
+            return false;  
+        else  
+            return true;
+	}
+	
 }
