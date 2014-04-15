@@ -16,11 +16,11 @@ public class LoginController {
  
 		ModelAndView model = new ModelAndView();
 		if (error != null) {
-			model.addObject("error", "Invalid username and password!");
+			model.addObject("error", "Nieprawidłowy login lub hasło, spróbuj ponownie...");
 		}
  
 		if (logout != null) {
-			model.addObject("msg", "You've been logged out successfully.");
+			model.addObject("msg", "Zostałeś wylogowany ");
 		}
 		model.setViewName("login");
  

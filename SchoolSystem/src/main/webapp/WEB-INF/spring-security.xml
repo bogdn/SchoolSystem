@@ -15,9 +15,11 @@
 <http pattern="/login" security="none"></http>
 	<http use-expressions="true">
 	<form-login login-page="/login"
-		authentication-failure-url="/login" default-target-url="/main"/>
+		authentication-failure-url="/login?error" default-target-url="/"
+		/>
 		<intercept-url pattern="/" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/addTeacher" access="hasRole('ROLE_ADMIN')" /> 
+		<logout logout-success-url="/login?logout" />
 	</http>
 	
 	<beans:import resource="servlet-context.xml"/>

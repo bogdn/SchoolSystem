@@ -35,6 +35,12 @@
 				<a href="${addTeacher}">Dodaj nauczyciela</a>
 			</dd>
 			
+		<a href="<c:url value="j_spring_security_logout" />" > Logout</a>
+	
+	
+	
+	
+			
 		</sec:authorize>
 	</dl>
 	<script type="text/javascript">
