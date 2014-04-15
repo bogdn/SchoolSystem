@@ -4,22 +4,33 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div>
 <h4>${message}</h4>
-	<table align="center" width="400">
+	<table align="center" width="500">
 		<thead>
 			<tr>
 				<td>Id</td>
-				<td>Pełna nazwa</td>
+				<td>Imię</td>
+				<td>Nazwisko</td>
+				<td>Nazwa użytkownika</td>
+				<td>Klasa</td>
 				<td>Usuń</td>
+				<td>Więcej</td>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach var="teacher" items="${teachers}">
 				<tr>
 					<td>${teacher.id}</td>
+					<td>${teacher.name}</td>
+					<td>${teacher.surname}</td>
 					<td>${teacher.username}</td>
+					<td>${teacher.schoolClass.name}</td>
 					<td>
 					<spring:url value="/deleteTeacher?id=${teacher.id}" var="deleteTeacher" htmlEscape="true"/>
 					<a href="${deleteTeacher}">Usuń</a>
+					</td>
+					<td>
+					<spring:url value="/teacher?id=${teacher.id}" var="teacher" htmlEscape="true"/>
+					<a href="${teacher}">Więcej</a>
 					</td>
 				</tr>
 			</c:forEach>

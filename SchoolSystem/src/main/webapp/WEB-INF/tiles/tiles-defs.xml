@@ -10,9 +10,9 @@
 		<put-attribute name="body" value="" />
 		<put-attribute name="footer" value="/WEB-INF/tiles/footer.jsp" />
 	</definition>
-	<definition  name="loginLayout" template="/WEB-INF/tiles/loginLayout.jsp">
-	<put-attribute name=""></put-attribute> 
-	
+	<definition name="loginLayout" template="/WEB-INF/tiles/loginLayout.jsp">
+		<put-attribute name=""></put-attribute>
+
 	</definition>
 
 	<definition name="main" extends="defaultTemplate">
@@ -42,13 +42,16 @@
 
 	<definition name="teachers" extends="defaultTemplate">
 		<put-attribute name="body" value="/WEB-INF/tiles/pages/teachers.jsp" />
-		
 	</definition>
 	
+		<definition name="teacher" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/tiles/pages/teacher.jsp" />
+	</definition>
+
 	<definition name="login" extends="loginLayout">
-	<put-attribute name="body" value="/WEB-INF/tiles/pages/login.jsp"></put-attribute>
-	<put-attribute name="header" value="/WEB-INF/tiles/header.jsp"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/tiles/pages/login.jsp"></put-attribute>
+		<put-attribute name="header" value="/WEB-INF/tiles/header.jsp"></put-attribute>
 		<put-attribute name="footer" value="/WEB-INF/tiles/footer.jsp"></put-attribute>
-		
+
 	</definition>
 </tiles-definitions>

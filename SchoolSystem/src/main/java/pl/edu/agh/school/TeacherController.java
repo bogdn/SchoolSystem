@@ -94,6 +94,15 @@ public class TeacherController {
 		
 	}
 	
+	@RequestMapping(value="/teacher", method = RequestMethod.GET)
+	public String getTeacher(Model model, HttpServletRequest request) {
+		
+		Teacher teacher = teacherDAO.getTeacher(Integer.parseInt(request.getParameter("id")));
+		model.addAttribute("teacher", teacher);
+		return "teacher";
+		
+	}
+	
 	@Transactional
 	@RequestMapping(value = "/deleteTeacher", method = RequestMethod.GET)
 	public String deleteTeacher(Model model, HttpServletRequest request,
