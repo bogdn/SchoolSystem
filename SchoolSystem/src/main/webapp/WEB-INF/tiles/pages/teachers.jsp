@@ -13,6 +13,7 @@
 				<td>Nazwa użytkownika</td>
 				<td>Klasa</td>
 				<td>Usuń</td>
+				<td>Edytuj</td>
 				<td>Więcej</td>
 			</tr>
 		</thead>
@@ -27,6 +28,12 @@
 					<td>
 					<spring:url value="/deleteTeacher?id=${teacher.id}" var="deleteTeacher" htmlEscape="true"/>
 					<a href="${deleteTeacher}">Usuń</a>
+					</td>
+					<td>
+					<spring:url value="/editTeacher?id=${teacher.id}" var="editTeacher" htmlEscape="true"/>
+					<a href="${editTeacher}">Edytuj</a>
+					</td>
+					
 					</td>
 					<td>
 					<spring:url value="/teacher?id=${teacher.id}" var="teacher" htmlEscape="true"/>

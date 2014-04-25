@@ -31,85 +31,126 @@ public class TeacherController {
 
 	@Autowired
 	ClassDAO classDAO;
-	
+
 	@Autowired
 	TeacherDAO teacherDAO;
-	
-	@Autowired 
+
+	@Autowired
 	RoleDAO roleDAO;
-	
+
 	@Autowired
 	UserDAO userDAO;
-	
+
 	@InitBinder
 	public void initBinder(WebDataBinder binder, WebRequest request) {
-	        binder.registerCustomEditor(Class.class, "schoolClass", new PropertyEditorSupport() {
-	         @Override
-	         public void setAsText(String text) {
-	            setValue((text.equals(""))?null:classDAO.getClass(Integer.parseInt((String)text)));
-	         }
-	     });
+		binder.registerCustomEditor(Class.class, "schoolClass",
+				new PropertyEditorSupport() {
+					@Override
+					public void setAsText(String text) {
+						setValue((text.equals("")) ? null : classDAO
+								.getClass(Integer.parseInt((String) text)));
+					}
+				});
 	}
-	
+
 	@Transactional
-	@RequestMapping(value="/addTeacher", method = RequestMethod.GET)
+	@RequestMapping(value = "/addTeacher", method = RequestMethod.GET)
 	public String addTeacher(Model model, HttpServletRequest request) {
-		
+
 		model.addAttribute("teacher", new Teacher());
 		model.addAttribute("classes", classDAO.findAll());
-			return "addTeacher";
+		return "addTeacher";
 	}
-	
+
 	@Transactional
 	@RequestMapping(value = "/addTeacher", method = RequestMethod.POST)
-	public String AddNewTeacher(@Valid Teacher teacher, BindingResult errors, Model model, HttpServletRequest request) {
-		
+	public String AddNewTeacher(@Valid Teacher teacher, BindingResult errors,
+			Model model, HttpServletRequest request) {
+
 		model.addAttribute("teacher", teacher);
-		
+
 		if (errors.hasErrors()) {
 			return "addTeacher";
 		}
-		
-		if(userDAO.isUserNameAvailable(teacher.getUsername()))
-		{
+
+		if (userDAO.isUserNameAvailable(teacher.getUsername())) {
 			teacher.setRole(roleDAO.getRole("ROLE_TEACHER"));
 			teacherDAO.saveTeacher(teacher);
 			model.addAttribute("teacher", new Teacher());
-			model.addAttribute("message", "Nauczyciel " +teacher.getName() +" " + teacher.getSurname() + " został dodany.");
-		}
-		else
-		{
+			model.addAttribute("message", "Nauczyciel " + teacher.getName()
+					+ " " + teacher.getSurname() + " został dodany.");
+		} else {
 			model.addAttribute("message", "Nazwa użytkownika jest zajęta.");
 		}
-		
-			return "addTeacher";
+
+		return "addTeacher";
 	}
-	
-	@RequestMapping(value="/teachers", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/teachers", method = RequestMethod.GET)
 	public String getTeachers(Model model) {
-		
+
 		List<Teacher> teachers = teacherDAO.findAll();
+		for (Teacher teacher : teachers) {
+			
+			
+		}
 		model.addAttribute("teachers", teachers);
 		return "teachers";
-		
+
 	}
-	
-	@RequestMapping(value="/teacher", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/teacher", method = RequestMethod.GET)
 	public String getTeacher(Model model, HttpServletRequest request) {
-		
-		Teacher teacher = teacherDAO.getTeacher(Integer.parseInt(request.getParameter("id")));
+
+		Teacher teacher = teacherDAO.getTeacher(Integer.parseInt(request
+				.getParameter("id")));
 		model.addAttribute("teacher", teacher);
 		return "teacher";
-		
+
 	}
-	
+
 	@Transactional
 	@RequestMapping(value = "/deleteTeacher", method = RequestMethod.GET)
 	public String deleteTeacher(Model model, HttpServletRequest request,
 			RedirectAttributes redirectAttributes) {
 		redirectAttributes.addFlashAttribute("message",
 				"Nauczyciel został usunięty.");
-		teacherDAO.removeTeacher(teacherDAO.getTeacher(Integer.parseInt(request.getParameter("id"))));
-		return "redirect:/classes";
+		teacherDAO.removeTeacher(teacherDAO.getTeacher(Integer.parseInt(request
+				.getParameter("id"))));
+		return "redirect:/teachers";
 	}
+
+	@Transactional
+	@RequestMapping(value = "/editTeacher", method = RequestMethod.GET)
+	public String editTeacher(Model model, HttpServletRequest request) {
+
+		Teacher teacher = teacherDAO.getTeacher(Integer.parseInt(request
+				.getParameter("id")));
+		model.addAttribute("teacher", teacher);
+		//teacher.setName("UDALO SIE!!!!!!!!!!");
+		//teacherDAO.updateTeacher(teacher);
+
+		model.addAttribute("classes", classDAO.findAll());
+		return "editTeacher";
+
+	}
+
+	@Transactional
+	@RequestMapping(value = "/editTeacher", method = RequestMethod.POST)
+	public String editTeacher(@Valid Teacher teacher, BindingResult errors,
+			Model model, HttpServletRequest request) {
+
+
+		if (errors.hasErrors()) {
+			return "editTeacher";
+		}
+			teacher.setRole(roleDAO.getRole("ROLE_TEACHER"));
+			teacherDAO.updateTeacher(teacher);
+			model.addAttribute("message", "Nauczyciel " + teacher.getName()
+					+ " " + teacher.getSurname() + " został zmodyfikowany.");
+//		
+//
+		return "editTeacher";
+	}
+
 }

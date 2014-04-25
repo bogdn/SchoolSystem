@@ -47,6 +47,14 @@
 		<definition name="teacher" extends="defaultTemplate">
 		<put-attribute name="body" value="/WEB-INF/tiles/pages/teacher.jsp" />
 	</definition>
+	<definition name="editTeacher" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/tiles/pages/editTeacher.jsp" />
+	</definition>
+	<definition name="editClass" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/tiles/pages/editClass.jsp" />
+	</definition>
+	
+	
 
 	<definition name="login" extends="loginLayout">
 		<put-attribute name="body" value="/WEB-INF/tiles/pages/login.jsp"></put-attribute>

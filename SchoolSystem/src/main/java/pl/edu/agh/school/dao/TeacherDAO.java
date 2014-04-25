@@ -9,4 +9,5 @@ public interface TeacherDAO {
 	public List<Teacher> findAll();
 	public void removeTeacher(Teacher teacher);
 	public Teacher getTeacher(int id);
+	public void updateTeacher(Teacher teacher);
 }

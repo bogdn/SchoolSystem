@@ -55,6 +55,14 @@ public class ClassDAOImpl implements ClassDAO {
 		Session session = sessionFactory.getCurrentSession();
 		session.save(schoolClass);
 	}
+
+	@Override
+	public void updateClass(Class _class) {
+		
+		Session session =sessionFactory.getCurrentSession();
+		session.update(_class);
+		
+	}
 	
 	
 

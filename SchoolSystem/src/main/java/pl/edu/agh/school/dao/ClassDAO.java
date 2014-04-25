@@ -10,4 +10,5 @@ public interface ClassDAO {
 	public List<Class> findAll();
 	public void removeClass(int id);
 	public void saveClass(Class schoolClass);
+	public void updateClass(Class _class);
 }

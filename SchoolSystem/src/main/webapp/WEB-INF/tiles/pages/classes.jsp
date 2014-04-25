@@ -11,6 +11,8 @@
 				<td>Pełna nazwa</td>
 				<td>Rocznik</td>
 				<td>Usuń</td>
+				<td>Edytuj</td>
+				
 			</tr>
 		</thead>
 		<tbody>
@@ -23,6 +25,12 @@
 					<spring:url value="/deleteClass?id=${schoolClass.id}" var="deleteClass" htmlEscape="true"/>
 					<a href="${deleteClass}">Usuń</a>
 					</td>
+					<td>
+					<spring:url value="/editClass?id=${schoolClass.id}" var="editClass" htmlEscape="true"/>
+					<a href="${editClass}">Edytuj</a>
+					
+					</td>
+					
 				</tr>
 			</c:forEach>
 		</tbody>

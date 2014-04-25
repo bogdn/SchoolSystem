@@ -35,6 +35,7 @@ public class TeacherDAOImpl implements TeacherDAO {
 	@Transactional
 	public void updateTeacher(Teacher teacher) {
 		Session session = sessionFactory.getCurrentSession();
+		
 		Class schoolClass = teacher.getSchoolClass();
 		if (schoolClass != null) {
 			Teacher oldTeacher = schoolClass.getMaster();
@@ -49,7 +50,7 @@ public class TeacherDAOImpl implements TeacherDAO {
 	@Transactional
 	public List<Teacher> findAll() {
 		Session session = sessionFactory.getCurrentSession();
-		List teachers = session.createQuery("from Teacher").list();
+		List<Teacher> teachers = session.createQuery("from Teacher").list();
 		return teachers;
 	}
 	
