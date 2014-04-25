@@ -90,10 +90,7 @@ public class TeacherController {
 	public String getTeachers(Model model) {
 
 		List<Teacher> teachers = teacherDAO.findAll();
-		for (Teacher teacher : teachers) {
-			
-			
-		}
+		
 		model.addAttribute("teachers", teachers);
 		return "teachers";
 
