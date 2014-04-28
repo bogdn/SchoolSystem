@@ -31,21 +31,24 @@
 				<td><sf:input path="year" id="year" /></td>
 				<td><sf:errors path="year" cssClass="error" /></td>
 			</tr>
-			<!-- DO NOT WORK
+			<!--  To change class's Teacher you have to edit Teacher
 			<tr>
 				<th><label for="teacher">Wychowawca</label></th>
 				 <td><form:select path="teacher" id="teacher">
+				 	
 				
-					  <form:option value="-1" label="--- Select ---" />
+					  <form:option value="-1" label="Select" />
 					  <c:forEach var="teacher" items="${teachers}">
+					  
                     <form:option value="${teacher.id}">${teacher.name} ${teacher.surname}</form:option>
+               
                 </c:forEach>
 				       </form:select></td>
 				<td><sf:errors path="teacher" cssClass="error" /></td>
 				
 				
 			</tr>
-			END COMMENT-->
+			-->
 			<tr>
 				<th></th>
 				<td><input name="commit" type="submit" value="Edytuj" /></td>

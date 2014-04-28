@@ -48,12 +48,12 @@ public class ClassController {
 	
 	@InitBinder
 	public void initBinder(WebDataBinder binder, WebRequest request) {
-		binder.registerCustomEditor(Class.class, "schoolClass",
+		binder.registerCustomEditor(Teacher.class, "teacher",
 				new PropertyEditorSupport() {
 					@Override
 					public void setAsText(String text) {
-						setValue((text.equals("")) ? null : classDAO
-								.getClass(Integer.parseInt((String) text)));
+						setValue((text.equals("")) ? null : teacherDAO
+								.getTeacher(Integer.parseInt((String) text)));
 					}
 				});
 	}
@@ -97,8 +97,7 @@ public class ClassController {
 	@RequestMapping(value = "/editClass", method = RequestMethod.GET)
 	public String editTeacher(Model model, HttpServletRequest request) {
 
-		Class stClass = classDAO.getClass(Integer.parseInt(request
-				.getParameter("id")));
+		Class stClass = classDAO.getClass(Integer.parseInt(request.getParameter("id")));
 		model.addAttribute("stClass", stClass);
 		System.out.println(teacherDAO);
 		
@@ -115,17 +114,18 @@ public class ClassController {
 	@Transactional
 	@RequestMapping(value = "/editClass", method = RequestMethod.POST)
 	public String editTeacher(@Valid @ModelAttribute("stClass") Class stClass, BindingResult errors,
-			Model model, HttpServletRequest request) {
-
+			Model model, HttpServletRequest request, RedirectAttributes redirect) {
+redirect.addFlashAttribute("message", "Klasa została zmodyfikowana");
 
 		if (errors.hasErrors()) {
 			return "editClass";
+			
 		}
 			classDAO.updateClass(stClass);
 			model.addAttribute("message", "Klasa  została zmodyfikowana.");
-//		
+				System.out.println(stClass);
 //
-		return "editClass";
+		return "redirect:/classes";
 	}
 
 }

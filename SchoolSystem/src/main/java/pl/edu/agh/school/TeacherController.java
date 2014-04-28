@@ -135,7 +135,9 @@ public class TeacherController {
 	@Transactional
 	@RequestMapping(value = "/editTeacher", method = RequestMethod.POST)
 	public String editTeacher(@Valid Teacher teacher, BindingResult errors,
-			Model model, HttpServletRequest request) {
+			Model model, HttpServletRequest request, RedirectAttributes redirect) {
+		
+		redirect.addFlashAttribute("message", "Nauczyciel został zmodyfikowany");
 
 
 		if (errors.hasErrors()) {
@@ -147,7 +149,7 @@ public class TeacherController {
 					+ " " + teacher.getSurname() + " został zmodyfikowany.");
 //		
 //
-		return "editTeacher";
+		return "redirect:/teachers";
 	}
 
 }

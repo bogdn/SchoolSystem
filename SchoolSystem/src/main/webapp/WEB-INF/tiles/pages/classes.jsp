@@ -10,6 +10,7 @@
 				<td>Klasa</td>
 				<td>Pełna nazwa</td>
 				<td>Rocznik</td>
+				<td>Wychowawca</td>
 				<td>Usuń</td>
 				<td>Edytuj</td>
 				
@@ -21,6 +22,7 @@
 					<td>${schoolClass.name}</td>
 					<td>${schoolClass.fullName}</td>
 					<td>${schoolClass.year}</td>
+					<td>${schoolClass.teacher.name} ${schoolClass.teacher.surname}</td>
 					<td>
 					<spring:url value="/deleteClass?id=${schoolClass.id}" var="deleteClass" htmlEscape="true"/>
 					<a href="${deleteClass}">Usuń</a>

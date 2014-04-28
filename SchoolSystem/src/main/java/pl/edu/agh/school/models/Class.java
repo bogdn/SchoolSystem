@@ -25,7 +25,7 @@ public class Class {
 	@GeneratedValue
 	private long id;
 	
-	@Size(min=2, max=6) 
+	@Size(min=2, max=10) 
 	private String name;
 	@Size(min=2, max=30) 
 	private String fullName;
@@ -83,12 +83,6 @@ public class Class {
 				+ year;
 	}
 
-	public Teacher getMaster() {
-		return teacher;
-	}
-
-	public void setMaster(Teacher teacher) {
-		this.teacher = teacher;
-	}
+	
 	
 }

@@ -23,7 +23,7 @@ public class TeacherDAOImpl implements TeacherDAO {
 		Session session = sessionFactory.getCurrentSession();
 		Class schoolClass = teacher.getSchoolClass();
 		if (schoolClass != null) {
-			Teacher oldTeacher = schoolClass.getMaster();
+			Teacher oldTeacher = schoolClass.getTeacher();
 			if (oldTeacher != null && oldTeacher != teacher) {
 				oldTeacher.setSchoolClass(null);
 				session.update(oldTeacher);
@@ -38,7 +38,7 @@ public class TeacherDAOImpl implements TeacherDAO {
 		
 		Class schoolClass = teacher.getSchoolClass();
 		if (schoolClass != null) {
-			Teacher oldTeacher = schoolClass.getMaster();
+			Teacher oldTeacher = schoolClass.getTeacher();
 			if (oldTeacher != null && oldTeacher != teacher) {
 				oldTeacher.setSchoolClass(null);
 				session.update(oldTeacher);

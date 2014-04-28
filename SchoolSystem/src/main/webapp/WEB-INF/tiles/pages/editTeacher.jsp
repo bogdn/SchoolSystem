@@ -43,15 +43,24 @@
 			</tr>
 			<tr>
 				<th><label for="schoolClass">Klasa</label></th>
-				 
-				
+
+
 				<td><form:select path="schoolClass" id="schoolClass">
-				
-					  <form:option value="-1" label="--- Select ---" />
-					  <c:forEach var="schoolClass" items="${classes}">
-                    <form:option value="${schoolClass.id}">${schoolClass.fullName}</form:option>
-                </c:forEach>
-				       </form:select></td>
+
+						<form:option value="${teacher.schoolClass.id}"> ${teacher.schoolClass.fullName}</form:option>
+						<c:forEach var="schoolClass" items="${classes}">
+							<c:choose>
+								<c:when test="${teacher.schoolClass.id eq schoolClass.id}">
+
+								</c:when>
+
+								<c:otherwise>
+									<form:option value="${schoolClass.id}"> ${schoolClass.fullName}</form:option>
+								</c:otherwise>
+								
+							</c:choose>
+						</c:forEach>
+					</form:select></td>
 				<td><sf:errors path="schoolClass" cssClass="error" /></td>
 			</tr>
 			<tr>
