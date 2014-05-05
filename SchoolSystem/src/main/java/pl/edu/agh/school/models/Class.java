@@ -1,11 +1,15 @@
 package pl.edu.agh.school.models;
 
+import java.util.List;
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PreRemove;
 import javax.persistence.Table;
@@ -36,6 +40,9 @@ public class Class {
 	
 	@OneToOne(mappedBy = "schoolClass")
 	private Teacher teacher;
+	
+	@OneToMany(mappedBy ="studentClass")
+	private Set<Student> student;
 
 	public Teacher getTeacher() {
 		return teacher;

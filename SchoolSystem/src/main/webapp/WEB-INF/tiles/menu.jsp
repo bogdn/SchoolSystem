@@ -35,6 +35,22 @@
 				<a href="${addTeacher}">Dodaj nauczyciela</a>
 			</dd>
 			
+		<dt>Zarządzanie uczniami</dt>
+		<dd>
+			<sec:authorize access="hasRole('ROLE_ADMIN')">
+				<spring:url value="/students" var="students" htmlEscape="true" />
+				<a href="${students}">Uczniowie</a>
+			</sec:authorize>
+		</dd>
+		
+		<dd>
+			<sec:authorize access="hasRole('ROLE_ADMIN')">
+				<spring:url value="/addStudent" var="addStudent" htmlEscape="true" />
+				<a href="${addStudent}">Dodaj ucznia</a>
+			</sec:authorize>
+		</dd>
+		
+		
 		<a href="<c:url value="j_spring_security_logout" />" > Logout</a>
 	
 	

@@ -55,7 +55,7 @@ public class TeacherController {
 
 	@Transactional
 	@RequestMapping(value = "/addTeacher", method = RequestMethod.GET)
-	public String addTeacher(Model model, HttpServletRequest request) {
+	public String addTeacher(Model model) {
 
 		model.addAttribute("teacher", new Teacher());
 		model.addAttribute("classes", classDAO.findAll());
