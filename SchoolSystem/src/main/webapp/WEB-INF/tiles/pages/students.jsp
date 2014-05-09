@@ -26,9 +26,12 @@
 					<td>${student.username}</td>
 					<td>${student.studentClass.name}</td>
 					<td>
-					
+					<spring:url value="/deleteStudent?id=${student.id}" var="deleteStudent" htmlEscape="true"/>
+					<a href="${deleteStudent}">Usuń</a>
 					</td>
 					<td>
+					<spring:url value="/editStudent?id=${student.id}" var="editStudent" htmlEscape="true"></spring:url>
+					<a href="${editStudent}">Edytuj</a>
 					
 					</td>
 					

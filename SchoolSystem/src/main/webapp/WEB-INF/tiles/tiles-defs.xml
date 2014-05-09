@@ -59,6 +59,10 @@
 	<definition name="students" extends="defaultTemplate">
 		<put-attribute name="body" value="/WEB-INF/tiles/pages/students.jsp" />
 	</definition>
+	<definition name="editStudent" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/tiles/pages/editStudent.jsp" />
+	</definition>
+	
 	
 	
 

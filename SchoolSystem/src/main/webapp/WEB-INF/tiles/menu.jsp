@@ -10,21 +10,21 @@
 			<a href="${homeUrl}">Home</a>
 		</dt>
 
+			<sec:authorize access="hasRole('admin')">
 		<dt>Zarządzanie klasami</dt>
 		<dd>
-			<sec:authorize access="hasRole('ROLE_ADMIN')">
 				<spring:url value="/classes" var="classes" htmlEscape="true" />
 				<a href="${classes}">Klasy</a>
 			</sec:authorize>
 		</dd>
 		<dd>
-			<sec:authorize access="hasRole('ROLE_ADMIN')">
+			<sec:authorize access="hasRole('admin')">
 				<spring:url value="/addClass" var="addClass" htmlEscape="true" />
 				<a href="${addClass}">Dodaj klasę</a>
 			</sec:authorize>
 		</dd>
 
-		<sec:authorize access="hasRole('ROLE_ADMIN')">
+		<sec:authorize access="hasRole('admin')">
 			<dt>Zarządzanie nauczycielami</dt>
 						<dd>
 				<spring:url value="/teachers" var="teachers" htmlEscape="true" />
@@ -34,30 +34,39 @@
 				<spring:url value="/addTeacher" var="addTeacher" htmlEscape="true" />
 				<a href="${addTeacher}">Dodaj nauczyciela</a>
 			</dd>
+				</sec:authorize>
 			
+			<sec:authorize access="hasRole('admin')">
 		<dt>Zarządzanie uczniami</dt>
 		<dd>
-			<sec:authorize access="hasRole('ROLE_ADMIN')">
 				<spring:url value="/students" var="students" htmlEscape="true" />
 				<a href="${students}">Uczniowie</a>
 			</sec:authorize>
 		</dd>
 		
 		<dd>
-			<sec:authorize access="hasRole('ROLE_ADMIN')">
+			<sec:authorize access="hasRole('admin')">
 				<spring:url value="/addStudent" var="addStudent" htmlEscape="true" />
 				<a href="${addStudent}">Dodaj ucznia</a>
 			</sec:authorize>
 		</dd>
 		
+		<sec:authorize access="hasAnyRole('admin','teacher')">
+		<dt>Dziennik ocen</dt>
+		<dd>
+				<spring:url value="/students" var="students" htmlEscape="true" />
+				<a href="${students}">Uczniowie</a>
+			</sec:authorize>
+		</dd>
 		
-		<a href="<c:url value="j_spring_security_logout" />" > Logout</a>
+		
+		<br><br><a href="<c:url value="j_spring_security_logout" />" > Wyloguj</a>
 	
 	
 	
 	
 			
-		</sec:authorize>
+		
 	</dl>
 	<script type="text/javascript">
 		// <![CDATA[

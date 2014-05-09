@@ -8,6 +8,9 @@ public interface StudentDAO {
 	
 	public void saveStudent(Student student);
 	public List<Student> findAll();
+	public void removeStudent(Student student);
+	public Student getStudent(int id);
+	public void updateStudent(Student student);
 
 
 }

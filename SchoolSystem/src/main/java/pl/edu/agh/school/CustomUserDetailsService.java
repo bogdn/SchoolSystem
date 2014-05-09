@@ -33,16 +33,15 @@ public class CustomUserDetailsService implements UserDetailsService {
   
     public UserDetails loadUserByUsername(String login)  
             throws UsernameNotFoundException {  
-          System.out.println(login);
-          System.out.println(userDAO);
         pl.edu.agh.school.models.User domainUser = userDAO.getUser(login);  
-          System.out.println(domainUser);
-          System.out.println("test3");
         boolean enabled = true;  
         boolean accountNonExpired = true;  
         boolean credentialsNonExpired = true;  
         boolean accountNonLocked = true;  
-  
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        System.out.println(domainUser.getUsername());
+        System.out.println(domainUser.getPassword());
+        System.out.println(domainUser.getRole());
         return new User(  
                 domainUser.getUsername(),   
                 domainUser.getPassword(),   
@@ -64,10 +63,13 @@ public class CustomUserDetailsService implements UserDetailsService {
         List<String> roles = new ArrayList<String>();  
   
         if (role.intValue() == 1) {  
-            roles.add("ROLE_ADMIN");   
+            roles.add("admin");   
         } else if (role.intValue() == 2) {  
-            roles.add("ROLE_MODERATOR");  
-        }  
+            roles.add("teacher");  
+        } 
+        else {
+        	roles.add("student");
+        }
         System.out.println(roles);
         return roles;  
     }  

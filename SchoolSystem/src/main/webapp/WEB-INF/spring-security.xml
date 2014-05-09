@@ -17,8 +17,10 @@
 	<form-login login-page="/login"
 		authentication-failure-url="/login?error" default-target-url="/"
 		/>
-		<intercept-url pattern="/" access="hasRole('ROLE_ADMIN')" />
-		<intercept-url pattern="/addTeacher" access="hasRole('ROLE_ADMIN')" /> 
+		<intercept-url pattern="/" access="hasAnyRole('admin', 'teacher', 'student')" />
+		
+		
+		<intercept-url pattern="/addTeacher" access="hasRole('admin')" /> 
 		<logout logout-success-url="/login?logout" />
 	</http>
 	

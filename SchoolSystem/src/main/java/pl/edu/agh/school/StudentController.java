@@ -81,4 +81,41 @@ public class StudentController {
 		model.addAttribute("students", studentDAO.findAll());
 		return "students";
 	}
+	
+	@Transactional
+	@RequestMapping(value = "/deleteStudent", method = RequestMethod.GET)
+	public String deleteStudent(Model model, HttpServletRequest request,
+			RedirectAttributes redirectAttributes) {
+		redirectAttributes.addFlashAttribute("message",
+				"Uczeń został usunięty.");
+		studentDAO.removeStudent(studentDAO.getStudent(Integer.parseInt(request.getParameter("id"))));
+		return "redirect:/students";
+	}
+	
+	@Transactional
+	@RequestMapping(value="/editStudent", method = RequestMethod.GET)
+	public String editStudent(Model model, HttpServletRequest request)  {
+		Student student = studentDAO.getStudent(Integer.parseInt(request.getParameter("id")));
+		model.addAttribute("student", student);
+		model.addAttribute("allClasses", classDAO.findAll());
+		return "editStudent";
+		
+	}
+	@Transactional
+	@RequestMapping(value="/editStudent", method = RequestMethod.POST)
+	public String editStudentPOST(@Valid Student student, Model model) {
+		System.out.println(student.getId());
+		if(true) {
+			studentDAO.updateStudent(student);
+			model.addAttribute("message", "Dane ucznia zaktualizowane");
+			return "redirect:/students";
+		}
+		else {
+			model.addAttribute("message", "Nazwa użytkownika zajęta");
+			return "editStudent";
+		}
+		
+		
+		
+	}
 }

@@ -1,7 +1,9 @@
 package pl.edu.agh.school.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,31 @@ public class StudentDAOImpl implements StudentDAO {
 		Session session = sessionFactory.getCurrentSession();
 		List<Student> students = session.createQuery("from Student").list();
 		return students;
+	}
+	@Transactional
+	public void removeStudent(Student student) {
+		Session session = sessionFactory.getCurrentSession();
+        session.delete(student);
+	}
+	@Transactional
+	public Student getStudent(int id) {
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery("from Student s where s.id = :id");  
+        query.setInteger("id", id);
+        List<Student> studentList = new ArrayList<Student>();  
+        studentList = query.list();  
+        if (studentList.size() > 0)  
+        	return studentList.get(0);
+        
+        return null;
+	}
+
+	@Override
+	public void updateStudent(Student student) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		session.update(student);
+		
 	}
 
 }

@@ -74,7 +74,7 @@ public class TeacherController {
 		}
 
 		if (userDAO.isUserNameAvailable(teacher.getUsername())) {
-			teacher.setRole(roleDAO.getRole("ROLE_TEACHER"));
+			teacher.setRole(roleDAO.getRole("teacher"));
 			teacherDAO.saveTeacher(teacher);
 			model.addAttribute("teacher", new Teacher());
 			model.addAttribute("message", "Nauczyciel " + teacher.getName()
@@ -143,7 +143,7 @@ public class TeacherController {
 		if (errors.hasErrors()) {
 			return "editTeacher";
 		}
-			teacher.setRole(roleDAO.getRole("ROLE_TEACHER"));
+			teacher.setRole(roleDAO.getRole("teacher"));
 			teacherDAO.updateTeacher(teacher);
 			model.addAttribute("message", "Nauczyciel " + teacher.getName()
 					+ " " + teacher.getSurname() + " został zmodyfikowany.");
