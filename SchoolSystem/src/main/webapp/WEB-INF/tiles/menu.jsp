@@ -50,6 +50,18 @@
 				<a href="${addStudent}">Dodaj ucznia</a>
 			</sec:authorize>
 		</dd>
+		<sec:authorize access="hasRole('admin')">
+		<dt>Zarządzanie przedmiotami</dt>
+		<dd>
+				<spring:url value="/addSubject" var="addSubject" htmlEscape="true" />
+				<a href="${addSubject}">Dodaj przedmiot</a>
+		</dd>
+		<dd>
+				<spring:url value="/subjects" var="subjects" htmlEscape="true" />
+				<a href="${subjects}">Przedmioty</a>
+			
+		</dd>
+			</sec:authorize>
 		
 		<sec:authorize access="hasAnyRole('admin','teacher')">
 		<dt>Dziennik ocen</dt>
@@ -58,6 +70,7 @@
 				<a href="${students}">Uczniowie</a>
 			</sec:authorize>
 		</dd>
+		
 		
 		
 		<br><br><a href="<c:url value="j_spring_security_logout" />" > Wyloguj</a>
