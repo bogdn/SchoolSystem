@@ -26,14 +26,14 @@
 	background-color: #d9edf7;
 	border-color: #bce8f1;
 }
-.header {
-	color: #0080FF;
+.header, .footer {
+	text-align: center;
 
 
 }
  
 #login-box {
-	width: 600px;
+	width: 700px;
 	padding: 20px;
 	margin: 100px auto;
 	background: #fff;

@@ -73,7 +73,7 @@
 		
 		
 		
-		<br><br><a href="<c:url value="j_spring_security_logout" />" > Wyloguj</a>
+		<a href="<c:url value="j_spring_security_logout" />" > Wyloguj</a>
 	
 	
 	

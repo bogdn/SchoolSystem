@@ -1,3 +1,3 @@
 <div class="header">  
- <h1>School System AGH</h1>  
+ <br/><img src="resources/header.png"><br><br>
 </div> 

@@ -13,16 +13,37 @@
 body {
 	font-family: Arial, Verdana, sans-serif;
 }
+a:HOVER {
+	text-decoration: none;
+	background-color: #CAE3FF;
+	
+}
+a, a:VISITED {
+	text-decoration: none;
+	color: black
+}
+
+.contentPane {
+	text-align: center;
+}
+
 
 .header,.footer,.leftPane,.rightPane {
 	border: 1px solid gray;
+	border-radius: 10px;
 }
 
 .header,.main,.footer {
 	width: 960px;
-	color: #665544;
+	color: black;
 	margin: 0px auto;
 	clear: both;
+}
+.header {
+	color: #0080FF;
+}
+.footer, .header, .rightPane {
+	text-align:center;
 }
 
 .leftPane,.rightPane {
