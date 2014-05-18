@@ -78,6 +78,7 @@ table thead {
 table tbody {
 	background: transparent;
 	color: #000;
+	
 }
 
 table tbody tr:nth-child(even) {
