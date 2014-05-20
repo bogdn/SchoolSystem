@@ -53,5 +53,17 @@ public class SubjectDAOImpl implements SubjectDAO {
 		Session session =sessionFactory.getCurrentSession();
 		session.update(subject);
 	}
+	@Transactional
+	public List<Subject> getSubjectsFromClass(int classID) {
+		
+		Session session =sessionFactory.getCurrentSession();
+		Query query = session.createQuery("from Subject s where s.subClass = :subClass");
+		query.setInteger("subClass", classID);
+		
+		List<Subject> subjects = new ArrayList<Subject>();
+		subjects = query.list();
+		
+		return subjects;
+	}
 
 }

@@ -2,6 +2,7 @@ package pl.edu.agh.school.dao.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -11,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import pl.edu.agh.school.dao.ClassDAO;
 import pl.edu.agh.school.models.Class;
+import pl.edu.agh.school.models.Student;
 import pl.edu.agh.school.models.User;
 
 public class ClassDAOImpl implements ClassDAO {
@@ -56,12 +58,21 @@ public class ClassDAOImpl implements ClassDAO {
 		session.save(schoolClass);
 	}
 
-	@Override
+	@Transactional
 	public void updateClass(Class _class) {
 		
 		Session session =sessionFactory.getCurrentSession();
 		session.update(_class);
 		
+	}
+
+	@Transactional
+	public Set<Student> getStudentsFromClass(int id) {
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery("students from Class c where c.id= :id");
+		query.setInteger("id", id);
+		Set<Student> students = (Set<Student>) query.list();
+		return students;
 	}
 	
 	

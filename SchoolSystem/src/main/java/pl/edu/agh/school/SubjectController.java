@@ -19,8 +19,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import pl.edu.agh.school.dao.ClassDAO;
 import pl.edu.agh.school.dao.SubjectDAO;
+import pl.edu.agh.school.dao.TeacherDAO;
 import pl.edu.agh.school.models.Class;
 import pl.edu.agh.school.models.Subject;
+import pl.edu.agh.school.models.Teacher;
 
 @Controller
 public class SubjectController {
@@ -29,9 +31,19 @@ public class SubjectController {
 	
 	@Autowired
 	private SubjectDAO subjectDAO;
+	@Autowired TeacherDAO teacherDAO;
 	
 	@InitBinder
 	public void initBinder(WebDataBinder binder, WebRequest request) {
+		
+		binder.registerCustomEditor(Teacher.class, "teacher",
+				new PropertyEditorSupport() {
+					@Override
+					public void setAsText(String text) {
+						setValue((text.equals("")) ? null : teacherDAO
+								.getTeacher(Integer.parseInt((String) text)));
+					}
+				});
 		binder.registerCustomEditor(Class.class, "subClass",
 				new PropertyEditorSupport() {
 					@Override
@@ -40,6 +52,8 @@ public class SubjectController {
 								.getClass(Integer.parseInt((String) text)));
 					}
 				});
+		
+		
 	}
 	@Transactional
 	@RequestMapping(value="addSubject", method = RequestMethod.GET)
@@ -47,6 +61,7 @@ public class SubjectController {
 		
 		model.addAttribute("subject", new Subject());
 		model.addAttribute("allClasses", classDAO.findAll());
+		model.addAttribute("allTeachers", teacherDAO.findAll());
 		return "addSubject";
 		
 	}
@@ -89,6 +104,7 @@ public class SubjectController {
 		
 		model.addAttribute("subject", subjectDAO.getSubject(Integer.parseInt(request.getParameter("id"))));
 		model.addAttribute("allClasses", classDAO.findAll());
+		model.addAttribute("allTeachers", teacherDAO.findAll());
 		return "editSubject";
 		
 	}

@@ -71,6 +71,15 @@
 	<definition name="editSubject" extends="defaultTemplate">
 		<put-attribute name="body" value="/WEB-INF/tiles/pages/editSubject.jsp" />
 	</definition>
+	<definition name="listClasses" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/tiles/pages/listClasses.jsp" />
+	</definition>
+	<definition name="subjectsOfClass" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/tiles/pages/subjectsOfClass.jsp" />
+	</definition>
+	<definition name="listStudents" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/tiles/pages/listStudents.jsp" />
+	</definition>
 	
 	
 	

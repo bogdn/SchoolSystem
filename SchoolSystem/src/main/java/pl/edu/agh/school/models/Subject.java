@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -17,7 +19,16 @@ public class Subject {
 	@OneToOne
 	@JoinColumn(name="class")
 	private Class subClass;
+	@OneToOne
+	@JoinColumn(name="teacher")
+	private Teacher teacher;
 	
+	public Teacher getTeacher() {
+		return teacher;
+	}
+	public void setTeacher(Teacher teacher) {
+		this.teacher = teacher;
+	}
 	public Long getId() {
 		return id;
 	}

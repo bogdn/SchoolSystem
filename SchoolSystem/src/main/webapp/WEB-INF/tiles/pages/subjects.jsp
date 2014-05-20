@@ -10,6 +10,7 @@
 				<td>Id</td>
 				<td>Nazwa</td>
 				<td>Klasa</td>
+				<td>Nauczyciel</td>
 				<td>Eytuj</td>
 				<td>Usuń</td>
 				
@@ -21,6 +22,7 @@
 					<td>${subject.id}</td>
 					<td><b>${subject.name}</b></td>
 					<td>${subject.subClass.fullName}</td>
+					<td>${subject.teacher.name} ${subject.teacher.surname}</td>
 					<td>
 					<spring:url value="/editSubject?id=${subject.id}" var="editSubject"></spring:url>
 					<a href="${editSubject}">Edytuj</a>

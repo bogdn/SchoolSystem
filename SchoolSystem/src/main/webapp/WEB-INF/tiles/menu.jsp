@@ -66,14 +66,14 @@
 		<sec:authorize access="hasAnyRole('admin','teacher')">
 		<dt>Dziennik ocen</dt>
 		<dd>
-				<spring:url value="/students" var="students" htmlEscape="true" />
-				<a href="${students}">Uczniowie</a>
-			</sec:authorize>
+				<spring:url value="/listClasses" var="listClasses" htmlEscape="true" />
+				<a href="${listClasses}">Lista klas</a>
 		</dd>
+			</sec:authorize>
 		
 		
 		
-		<a href="<c:url value="j_spring_security_logout" />" > Wyloguj</a>
+		<a href="<c:url value="j_spring_security_logout" />">  Wyloguj</a>
 	
 	
 	

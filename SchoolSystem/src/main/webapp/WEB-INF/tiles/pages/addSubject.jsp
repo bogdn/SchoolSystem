@@ -15,18 +15,27 @@
 				<td><sf:input path="name" id="name" /></td>
 				<td><sf:errors path="name" cssClass="error"></sf:errors></td>
 			</tr>
-			</tr>
-						<tr>
+
+			<tr>
 				<th><label for="subClass">Klasa</label></th>
-				<td>
-				<sf:select path="subClass" id="subClass">
-					  <sf:option value="-1" label="--- Select ---" />
-					  <c:forEach var="sbClass" items="${allClasses}">
-                    <option value="${sbClass.id}">${sbClass.fullName}</option>
-                </c:forEach>
-				       </sf:select>
-                                </td>
-                                <td><sf:errors path="subClass" cssClass="error" /></td>
+				<td><sf:select path="subClass" id="subClass">
+						<sf:option value="-1" label="--- Select ---" />
+						<c:forEach var="sbClass" items="${allClasses}">
+							<option value="${sbClass.id}">${sbClass.fullName}</option>
+						</c:forEach>
+					</sf:select></td>
+				<td><sf:errors path="subClass" cssClass="error" /></td>
+			</tr>
+			
+			<tr>
+				<th><label for="teacher">Nauczyciel</label></th>
+				<td><sf:select path="teacher" id="teacher">
+						<sf:option value="-1" label="--- Select ---" />
+						<c:forEach var="teach" items="${allTeachers}">
+							<option value="${teach.id}">${teach.name} ${teach.surname}</option>
+						</c:forEach>
+					</sf:select></td>
+				<td><sf:errors path="teacher" cssClass="error" /></td>
 			</tr>
 			<tr>
 			<tr>
