@@ -13,15 +13,7 @@
 body {
 	font-family: Arial, Verdana, sans-serif;
 }
-a:HOVER {
-	text-decoration: none;
-	background-color: #CAE3FF;
-	
-}
-a, a:VISITED {
-	text-decoration: none;
-	color: black
-}
+
 
 .contentPane {
 	text-align: center;

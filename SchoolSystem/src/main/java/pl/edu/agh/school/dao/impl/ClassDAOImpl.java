@@ -67,12 +67,17 @@ public class ClassDAOImpl implements ClassDAO {
 	}
 
 	@Transactional
-	public Set<Student> getStudentsFromClass(int id) {
+	public Class getStudentsFromClass(int id) {
 		Session session = sessionFactory.getCurrentSession();
-		Query query = session.createQuery("students from Class c where c.id= :id");
-		query.setInteger("id", id);
-		Set<Student> students = (Set<Student>) query.list();
-		return students;
+		Query query = session.createQuery("from Class c where c.id = :id");  
+
+        query.setInteger("id", id);
+        List<Class> classList = new ArrayList<Class>();  
+        classList = query.list();  
+        if (classList.size() > 0)  
+        	return classList.get(0);
+        
+        return null;
 	}
 	
 	

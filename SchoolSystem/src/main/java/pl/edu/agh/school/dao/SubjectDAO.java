@@ -2,6 +2,7 @@ package pl.edu.agh.school.dao;
 
 import java.util.List;
 
+import pl.edu.agh.school.models.Mark;
 import pl.edu.agh.school.models.Subject;
 
 public interface SubjectDAO {
@@ -11,5 +12,6 @@ public interface SubjectDAO {
 	public List<Subject> findAll();
 	public void removeSubject(Subject subject);
 	public void updateSubject(Subject subject);
+	
 
 }

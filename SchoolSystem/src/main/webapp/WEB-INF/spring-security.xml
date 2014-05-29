@@ -34,6 +34,7 @@
 	<beans:bean id="TeacherDAO" class="pl.edu.agh.school.dao.impl.TeacherDAOImpl" />
 	<beans:bean id="StudentDAO" class="pl.edu.agh.school.dao.impl.StudentDAOImpl" />
 	<beans:bean id="SubjectDAO" class="pl.edu.agh.school.dao.impl.SubjectDAOImpl" />
+	<beans:bean id="MarkDAO" class="pl.edu.agh.school.dao.impl.MarkDAOImpl" />
 	
 	
 	

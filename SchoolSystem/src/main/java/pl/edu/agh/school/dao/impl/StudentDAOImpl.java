@@ -50,12 +50,21 @@ public class StudentDAOImpl implements StudentDAO {
         return null;
 	}
 
-	@Override
+	@Transactional
 	public void updateStudent(Student student) {
 		
 		Session session = sessionFactory.getCurrentSession();
 		session.update(student);
 		
+	}
+
+	@Transactional
+	public List<Student> getStudentsFromClass(int classId) {
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery("from Student s where s.studentClass :=id");
+		query.setInteger("id", classId);
+		List<Student> students = query.list();
+		return students;
 	}
 
 }

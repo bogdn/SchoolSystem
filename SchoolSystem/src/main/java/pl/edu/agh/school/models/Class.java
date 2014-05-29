@@ -5,6 +5,7 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -41,8 +42,16 @@ public class Class {
 	@OneToOne(mappedBy = "schoolClass")
 	private Teacher teacher;
 	
-	@OneToMany(mappedBy ="studentClass")
-	private Set<Student> student;
+	public List<Student> getStudent() {
+		return student;
+	}
+
+	public void setStudent(List<Student> student) {
+		this.student = student;
+	}
+
+	@OneToMany(mappedBy ="studentClass", fetch = FetchType.EAGER)
+	private List<Student> student;
 
 	public Teacher getTeacher() {
 		return teacher;

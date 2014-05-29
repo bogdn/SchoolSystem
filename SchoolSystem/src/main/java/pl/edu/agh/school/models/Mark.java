@@ -13,14 +13,27 @@ public class Mark {
 	@Id
 	@GeneratedValue
 	private Long id;
+	public Student getStudent() {
+		return student;
+	}
+	public void setStudent(Student student) {
+		this.student = student;
+	}
 	private String value;
 	@ManyToOne
-	@JoinColumn(name="user_id")
-	private User user;
+	@JoinColumn(name="student_id")
+	private Student student;
 	@ManyToOne
 	@JoinColumn(name="subject_id")
 	private Subject subject;
+	private String description;
 	
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -33,12 +46,7 @@ public class Mark {
 	public void setValue(String value) {
 		this.value = value;
 	}
-	public User getUser() {
-		return user;
-	}
-	public void setUser(User user) {
-		this.user = user;
-	}
+	
 	public Subject getSubject() {
 		return subject;
 	}

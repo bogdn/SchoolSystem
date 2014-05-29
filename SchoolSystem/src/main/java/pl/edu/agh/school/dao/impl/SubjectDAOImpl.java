@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import pl.edu.agh.school.dao.SubjectDAO;
+import pl.edu.agh.school.models.Mark;
 import pl.edu.agh.school.models.Student;
 import pl.edu.agh.school.models.Subject;
 
@@ -65,5 +66,6 @@ public class SubjectDAOImpl implements SubjectDAO {
 		
 		return subjects;
 	}
+
 
 }

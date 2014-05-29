@@ -80,7 +80,12 @@
 	<definition name="listStudents" extends="defaultTemplate">
 		<put-attribute name="body" value="/WEB-INF/tiles/pages/listStudents.jsp" />
 	</definition>
-	
+	<definition name="studentMarks" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/tiles/pages/studentMarks.jsp" />
+	</definition>
+	<definition name="addMark" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/tiles/pages/addMark.jsp" />
+	</definition>
 	
 	
 
