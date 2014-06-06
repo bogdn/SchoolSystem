@@ -4,7 +4,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <div>
-<table>
+<table id="table-2">
 <tr>
 <th>Imię i Nazwisko</th>
 <th>Oceny</th>

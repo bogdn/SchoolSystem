@@ -6,9 +6,11 @@
 	<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 	
 	<div>
-	
+	<b>Lista wszystkich przedmiotów dla klasy:</b> ${sClass.fullName}<br>
+	<b>Rocznik:</b> ${sClass.year}
 	<sec:authorize access="hasRole('admin')">
-	<table>
+	<br/><br/><br/>
+	<table id="table-2">
 	<tr>
 	<th>Przedmiot</th>
 	<th></th>

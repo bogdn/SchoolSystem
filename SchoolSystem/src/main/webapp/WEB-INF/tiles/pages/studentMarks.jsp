@@ -7,7 +7,7 @@
 <h1>${message}</h1>
 <spring:url value="/addMark" var="addMark"></spring:url>
 <h1><a href ="${addMark}?student_id=${student_id}&subject_id=${subject_id}">DODAJ OCENĘ</a> </h1>
-	<table>
+	<table id="table-2">
 		<tr>
 			<th>Ocena</th>
 			<th>Opis</th>
@@ -19,8 +19,16 @@
 			<tr>
 				<td>${mark.value}</td>
 				<td>${mark.description}</td>
-				<td></td>
-				<td></td>
+				<td>
+				<spring:url value="/editMark" var="editMark"></spring:url>
+				<a href="${editMark}?mark_id=${mark.id}&student_id=${student_id}&subject_id=${subject_id}">Edytuj</a>
+				
+				</td>
+				<td>
+				<spring:url value="/deleteMark" var="deleteMark"></spring:url>
+				<a href="${deleteMark}?mark_id=${mark.id}&id=${student_id}&subject_id=${subject_id}">Usuń</a>
+				</td>
+				
 			</tr>
 
 		</c:forEach>

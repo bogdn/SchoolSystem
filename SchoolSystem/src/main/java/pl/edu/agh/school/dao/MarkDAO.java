@@ -8,5 +8,7 @@ public interface MarkDAO {
 	public Mark getMark(int id);
 	public List<Mark> getStudentMarks(int studentId, int subjectId);
 	public void saveMark(Mark mark);
+	public void deleteMark(Mark mark);
+	public void updateMark(Mark mark);
 
 }

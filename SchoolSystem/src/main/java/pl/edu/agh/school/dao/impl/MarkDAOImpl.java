@@ -19,7 +19,7 @@ public class MarkDAOImpl implements MarkDAO {
 	@Transactional
 	public Mark getMark(int id) {
 		Session session = sessionFactory.getCurrentSession();
-		Query query = session.createQuery("from Mark m where m.id :=id");
+		Query query = session.createQuery("from Mark m where m.id = :id");
 		query.setInteger("id", id);
 		List<Mark> marks = query.list();
 		if(marks.get(0)!= null) 
@@ -43,6 +43,19 @@ public class MarkDAOImpl implements MarkDAO {
 		Session session = sessionFactory.getCurrentSession();
 		session.save(mark);
 		
+	}
+
+	@Transactional
+	public void deleteMark(Mark mark) {
+		Session session = sessionFactory.getCurrentSession();
+		session.delete(mark);
+		
+	}
+
+	@Transactional
+	public void updateMark(Mark mark) {
+		Session session = sessionFactory.getCurrentSession();
+		session.update(mark);
 	}
 
 

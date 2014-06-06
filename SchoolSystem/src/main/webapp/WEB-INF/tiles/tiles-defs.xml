@@ -86,6 +86,9 @@
 	<definition name="addMark" extends="defaultTemplate">
 		<put-attribute name="body" value="/WEB-INF/tiles/pages/addMark.jsp" />
 	</definition>
+	<definition name="editMark" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/tiles/pages/editMark.jsp" />
+	</definition>
 	
 	
 

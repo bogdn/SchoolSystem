@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import pl.edu.agh.school.dao.ClassDAO;
@@ -45,6 +46,7 @@ public class GradeBookController {
 	@RequestMapping(value="/subjectsOfClass", method = RequestMethod.GET)
 	public String listSubjectsOfClass(Model model, HttpServletRequest request) {
 		int classID = Integer.parseInt(request.getParameter("id"));
+		model.addAttribute("sClass", classDAO.getClass(classID));
 		model.addAttribute("subjects", subjectDAO.getSubjectsFromClass(classID));
 		return "subjectsOfClass";
 		
@@ -98,6 +100,50 @@ public class GradeBookController {
 		redirectAttributes.addFlashAttribute("message", "Dodano nową ocenę");
 		return "redirect:/studentMarks?id="+studentId+"&subject_id="+subjectId;
 	}
+	
+	@RequestMapping(value = "/deleteMark", method = RequestMethod.GET)
+	public String deleteMark(Model model, @RequestParam("mark_id") String markId, @RequestParam("id") String studentId,
+			@RequestParam("subject_id") String subjectId, RedirectAttributes attributes) {
+		attributes.addFlashAttribute("message", "usunięto 1 ocenę");
+		System.out.println(markId);
+		int markID = Integer.parseInt(markId);
+		Mark mark = markDAO.getMark(markID);
+		System.out.println(mark);
+		markDAO.deleteMark(mark);
+		
+		return "redirect:/studentMarks?id="+studentId+"&subject_id="+subjectId;
+	}
+	
+	@RequestMapping(value = "/editMark", method = RequestMethod.GET)
+	public String editMark(Model model, @RequestParam("mark_id") String markId, 
+			@RequestParam("student_id") String studentId, @RequestParam("subject_id") String subjectId) {
+		int markID = Integer.parseInt(markId);
+		model.addAttribute("student", studentDAO.getStudent(Integer.parseInt(studentId)));
+		model.addAttribute("student_id", studentId);
+		model.addAttribute("subject_id", subjectId);
+		Mark mark = markDAO.getMark(markID);
+		model.addAttribute("mark", mark);
+		return "editMark";
+	}
+	
+	@RequestMapping(value = "/editMark", method = RequestMethod.POST)
+	public String editMarkPost(Model model, @Valid Mark mark,
+			@RequestParam("subject_id") int subjectId, @RequestParam("student_id") int studentId,
+			RedirectAttributes attributes) {
+			
+			Student student = studentDAO.getStudent(studentId);
+			Subject subject = subjectDAO.getSubject(subjectId);
+			mark.setStudent(student);
+			mark.setSubject(subject);
+			attributes.addFlashAttribute("message", "Zmodyfikowano ocenę");
+		
+		
+			markDAO.updateMark(mark);
+		
+		
+		return "redirect:/studentMarks?id="+studentId + "&subject_id=" + subjectId;
+	}
+	
 	
 	
 	

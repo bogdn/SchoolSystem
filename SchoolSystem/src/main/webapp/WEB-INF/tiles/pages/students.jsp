@@ -4,7 +4,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div>
 <h4>${message}</h4>
-	<table align="center" width="500">
+	<table align="center" width="500" id="table-2">
 		<thead>
 			<tr>
 				<td>Id</td>
