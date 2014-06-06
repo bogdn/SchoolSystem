@@ -9,7 +9,7 @@
 	<h2>Dodaj Przedmiot</h2>
 	<spring:url value="/addSubject" var="addSubject" htmlEscape="true"></spring:url>
 	<sf:form modelAttribute="subject" method="POST" action="${addSubject}">
-		<table>
+		<table id="table-2">
 			<tr>
 				<th><sf:label path="name">Nazwa przedmiotu</sf:label></th>
 				<td><sf:input path="name" id="name" /></td>

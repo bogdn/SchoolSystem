@@ -6,7 +6,7 @@
 	<spring:url value="/addMark" var="addMark" htmlEscape="true" />
 	<sf:form method="POST" modelAttribute="mark" action="${addMark}?student_id=${student_id}&subject_id=${subject_id}">
 
-		<table>
+		<table id="table-2">
 			<tr>
 				<!-- <sf:input path="student" id="student"  />
 				<sf:errors path="student" cssClass="error" />

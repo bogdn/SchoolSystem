@@ -9,7 +9,7 @@
 <sec:authorize access="hasRole('admin')" >
 <h3>Wybierz odpowiednią klasę aby wyświetlić listę przedmiotów</h3>
 
-<table>
+<table id="table-2">
 <tr>
 <th>Klasa</th>
 <td></td>

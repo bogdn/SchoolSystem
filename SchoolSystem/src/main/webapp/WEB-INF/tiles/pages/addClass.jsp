@@ -6,7 +6,7 @@
 <spring:url value="/addClass" var="addClass" htmlEscape="true"/>
 	<sf:form method="POST" modelAttribute="class" action="${addClass}">
 		<fieldse>
-		<table cellspacing="0">
+		<table cellspacing="0" id="table-2">
 			<tr>
 				<th><label for="name">Nazwa</label></th>
 				<td><sf:input path="name" id="name" /></td>
