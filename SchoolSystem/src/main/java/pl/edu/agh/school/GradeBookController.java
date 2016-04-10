@@ -68,6 +68,8 @@ public class GradeBookController {
 	public String getStudentMarks(Model model, HttpServletRequest request) {
 		int studentId = Integer.parseInt(request.getParameter("id"));
 		model.addAttribute("student_id", studentId);
+		model.addAttribute("student_name", studentDAO.getStudent(studentId).getName() + " " +
+				studentDAO.getStudent(studentId).getSurname());
 		int subjectId = Integer.parseInt(request.getParameter("subject_id"));
 		model.addAttribute("subject_id", subjectId);
 		model.addAttribute("marks",markDAO.getStudentMarks(studentId, subjectId));

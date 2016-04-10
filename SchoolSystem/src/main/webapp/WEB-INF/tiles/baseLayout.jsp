@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>School System AGH</title>
+<title>School System PK</title>
 <script type="text/javascript"
 	src="<c:url value="/resources/js/menu.js" />"></script>
 <style type="text/css">

@@ -6,6 +6,8 @@
 <div>
 <h1>${message}</h1>
 <spring:url value="/addMark" var="addMark"></spring:url>
+<center><h1>Oceny ucznia: ${student_name}</h1></center>
+
 <h3><a href ="${addMark}?student_id=${student_id}&subject_id=${subject_id}">Kliknij aby DODAĆ OCENĘ</a> </h1>
 	<table id="table-2">
 		<tr>
